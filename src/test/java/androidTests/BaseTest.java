@@ -1,14 +1,17 @@
+package androidTests;
+
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.android.options.UiAutomator2Options;
 import io.appium.java_client.service.local.AppiumDriverLocalService;
 import io.appium.java_client.service.local.AppiumServiceBuilder;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
-import org.testng.annotations.Test;
+import org.testng.internal.Utils;
+import utils.utils;
 
 import java.io.File;
 import java.net.MalformedURLException;
-import java.net.URL;
+import java.time.Duration;
 import java.util.HashMap;
 
 public class BaseTest {
@@ -19,6 +22,10 @@ public class BaseTest {
     */
      String sdkPath = "/Users/E2274/Library/Android/sdk";
     HashMap<String,String > env = new HashMap<>();
+
+
+    utils util;
+
    // URL appiumServiceRunner =null;
 
     String ipAddress = "192.168.1.20";
@@ -46,6 +53,8 @@ public class BaseTest {
      */
      AndroidDriver driver;
 
+    @BeforeClass
+    public void setUp() throws MalformedURLException {}
 
 
     @BeforeClass
@@ -67,6 +76,9 @@ public class BaseTest {
                 appiumServiceRunner.getUrl(), options
         );
 
+        //Global wait which driver will carry
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+        util = new utils(driver);
     }
 
 
