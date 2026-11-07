@@ -18,7 +18,7 @@ public class firstClass extends BaseTest{
    public void InitialisingDriver() throws MalformedURLException {
 
 
-       startAppiumServer();
+
        AndroidBatteryInfo batteryInfo = driver.getBatteryInfo();
        System.out.println(batteryInfo.getState());
 
@@ -29,8 +29,6 @@ public class firstClass extends BaseTest{
 
        driver.findElement(AppiumBy.xpath("//android.widget.TextView[@content-desc=\"Access'ibility\"]")).click();
 
-       
-       stopAppiumServer();
 
    }
 

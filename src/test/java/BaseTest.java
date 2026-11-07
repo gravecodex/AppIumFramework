@@ -2,6 +2,8 @@ import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.android.options.UiAutomator2Options;
 import io.appium.java_client.service.local.AppiumDriverLocalService;
 import io.appium.java_client.service.local.AppiumServiceBuilder;
+import org.testng.annotations.AfterClass;
+import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
 import java.io.File;
@@ -45,7 +47,8 @@ public class BaseTest {
      AndroidDriver driver;
 
 
-    @Test
+
+    @BeforeClass
     public void startAppiumServer() throws MalformedURLException {
 
         env.put("ANDROID_HOME", sdkPath);
@@ -67,7 +70,7 @@ public class BaseTest {
     }
 
 
-    @Test
+    @AfterClass
     public void stopAppiumServer(){
 
         driver.quit();
